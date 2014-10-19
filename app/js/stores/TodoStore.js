@@ -34,12 +34,7 @@ var searchFilter = '';
 // app 第一次啟動時，存入一包 mock data 到 localStorage 供測試
 var db = window.localStorage;
 if( db.hasOwnProperty('mydb') == false ){
-    console.log( '\n無歷史資料，存入 mock data' );
-    // var mock = [
-    //     {name: '待辦事項 1', created: Date.now(), uid: cnt++},
-    //     {name: '待辦事項 2', created: Date.now(), uid: cnt++}
-    // ];
-    // db.setItem('mydb', JSON.stringify({todos: mock, selectedItem: null}) )
+    // console.log( '\n無歷史資料，存入 mock data' );
     db.setItem('mydb', JSON.stringify({todos: [], selectedItem: null}) )
 }
 
@@ -95,7 +90,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
 
             arrTodos.push( action.item );
 
-            console.log( 'Store 新增: ', arrTodos );
+            // console.log( 'Store 新增: ', arrTodos );
 
             // 將新增的項目設為 selected，將來在 ui 裏會高亮與自動捲動
             selectedItem = action.item;
@@ -115,7 +110,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
                 return item != action.item;
             })
 
-            console.log( 'Store 刪完: ', arrTodos );
+            // console.log( 'Store 刪完: ', arrTodos );
 
             Store.emit( AppConstants.CHANGE_EVENT );
 
@@ -128,7 +123,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
          */    
         case AppConstants.TODO_UPDATE:
 
-            console.log( 'Store 更新: ', arrTodos );
+            // console.log( 'Store 更新: ', arrTodos );
 
             Store.emit( AppConstants.CHANGE_EVENT );
 
@@ -141,7 +136,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
          */    
         case AppConstants.TODO_SELECT:
 
-            console.log( 'Store 選取: ', action.item );
+            // console.log( 'Store 選取: ', action.item );
 
             // 選取同樣的 item 就不用處理下去了
             if( selectedItem != action.item ){

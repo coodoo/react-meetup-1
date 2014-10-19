@@ -72,7 +72,7 @@ var comp = React.createClass({
    * 
    */
   handleClick: function( item ){
-      console.log( '\n\nitem click: ', item.name );
+      // console.log( '\n\nitem click: ', item.name );
       actions.selectTodo(item);
   },  
 

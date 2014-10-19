@@ -69,8 +69,8 @@ var comp = React.createClass({
    * 按下 save 鈕就存檔
    */
   handleSave: function(evt){
-      console.log( 'save new item' );
 
+      // console.log( 'save new item' );
       
       var item = this.state.currentItem;
 
