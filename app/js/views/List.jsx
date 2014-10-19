@@ -9,6 +9,23 @@ var ListItem = React.createFactory(require('./ListItem.jsx'));
 var comp = React.createClass({
 
   /**
+   * 新增的 item 會在 list 最底部，有可能超出捲動範圍而看不到，
+   * 因此要自動往下捲使其可視
+   * 但同時也要避免一般的點選行為出現亂跳現象，因此要精準判斷該物件是否需要被捲動
+   */
+  componentDidUpdate: function(){
+
+      var elem = document.querySelector('.todo-list .selected');
+      var parent = elem.parentElement;
+
+      // 10 是安全區間，避免有時判斷失靈導致該顯示而沒捲動
+      if( elem.getBoundingClientRect().top - parent.getBoundingClientRect().bottom > -10 ){
+          elem.scrollIntoView();
+      }
+
+  },
+
+  /**
    * 
    */
   render: function() {

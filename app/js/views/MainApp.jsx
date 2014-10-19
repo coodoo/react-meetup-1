@@ -159,10 +159,7 @@ var MainApp = React.createClass({
     getTruth: function() {
 
         // 是從 TodoStore 取資料(as the single source of truth)
-        return { 
-            arrTodos: TodoStore.getTodos(),
-            selectedItem: TodoStore.getSelectedItem()
-         };
+        return TodoStore.getAll();
     }
 
 

@@ -43,15 +43,11 @@ objectAssign( Store, EventEmitter.prototype, {
      * Public API
      * 供外界取得 store 內部資料
      */
-    getTodos: function(){
-        return arrTodos;
-    },
-
-    /**
-     * 
-     */
-    getSelectedItem: function(){
-        return selectedItem;
+    getAll: function(){
+        return {
+            arrTodos: arrTodos,
+            selectedItem: selectedItem
+        }
     },
 
     //
@@ -62,6 +58,12 @@ objectAssign( Store, EventEmitter.prototype, {
 //
 // event handlers
 
+var lastOP = undefined;
+
+/**
+ * 向 Dispatcher 註冊自已，才能偵聽到系統發出的事件
+ * 並且取回 dispatchToken 供日後 async 操作用
+ */
 Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
 
     // evt .action 就是 view 當時廣播出來的整包物件
@@ -78,6 +80,9 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
             arrTodos.push( action.item );
 
             console.log( 'Store 新增: ', arrTodos );
+
+            // 將新增的項目設為 selected，將來在 ui 裏會高亮與自動捲動
+            selectedItem = action.item;
 
             Store.emit( AppConstants.CHANGE_EVENT );
                 
