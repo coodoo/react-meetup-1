@@ -2,8 +2,9 @@
  *
  */
 
+var React = require('react');
 var actions = require('../actions/AppActionCreator');
-var ListItem = React.createFactory(require('./ListItem.jsx'));
+var ListItem = require('./ListItem.jsx');
 
 //
 var comp = React.createClass({

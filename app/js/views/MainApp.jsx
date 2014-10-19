@@ -7,11 +7,11 @@
 //
 // import 
 
-// var React = require('react');
-var Header = React.createFactory( require('./Header.jsx') );
-var Footer = React.createFactory( require('./Footer.jsx') );
-var InputBox = React.createFactory( require('./InputBox.jsx') );
-var List = React.createFactory( require('./List.jsx') );
+var React = require('react');
+var Header = require('./Header.jsx');
+var Footer = require('./Footer.jsx');
+var InputBox = require('./InputBox.jsx');
+var List = require('./List.jsx');
 
 var TodoStore = require('../stores/TodoStore');
 var AppConstants = require('../constants/AppConstants');
