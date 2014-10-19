@@ -34,6 +34,9 @@ var arrTodos = [
 // 目前選取的 todo 項目
 var selectedItem = null;
 
+// header 裏隨打即查輸入的文字
+var searchFilter = '';
+
 /**
  * 建立 Store class，並且繼承 EventEMitter 以擁有廣播功能
  */
@@ -46,7 +49,8 @@ objectAssign( Store, EventEmitter.prototype, {
     getAll: function(){
         return {
             arrTodos: arrTodos,
-            selectedItem: selectedItem
+            selectedItem: selectedItem,
+            filter: searchFilter
         }
     },
 
@@ -127,6 +131,20 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
                 Store.emit( AppConstants.CHANGE_EVENT );
             }
 
+                
+            break;
+
+        /**
+         * 
+         */    
+        case AppConstants.TODO_FILTER:
+
+            // console.log( 'Store 查詢: ', action.val );
+
+            if( searchFilter != action.val ){
+                searchFilter = action.val
+                Store.emit( AppConstants.CHANGE_EVENT );
+            }
                 
             break;
 

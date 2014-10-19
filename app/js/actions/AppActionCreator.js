@@ -87,6 +87,15 @@ var AppActionCreators = {
 
     },
 
+    doSearch: function( val ) {
+
+        AppDispatcher.handleViewAction({
+            actionType: AppConstants.TODO_FILTER,
+            val: val
+        });
+
+    },
+
     // dummy
     noop: function(){}
 };

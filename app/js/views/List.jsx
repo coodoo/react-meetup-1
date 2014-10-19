@@ -16,6 +16,10 @@ var comp = React.createClass({
   componentDidUpdate: function(){
 
       var elem = document.querySelector('.todo-list .selected');
+
+      // 當前沒有選取任何項目就不繼續了
+      if(!elem) return;
+
       var parent = elem.parentElement;
 
       // 10 是安全區間，避免有時判斷失靈導致該顯示而沒捲動
@@ -31,8 +35,17 @@ var comp = React.createClass({
   render: function() {
 
     var arrTodos = this.props.truth.arrTodos;
+    var filter = this.props.truth.filter;
 
-    var arr = arrTodos.map(function(item){
+    var arr = arrTodos
+
+    // 先依隨打即查關鍵字過濾
+    .filter(function(item){
+        return item.name.indexOf(filter) != -1;
+    })
+
+    // 再將合格的項目轉成 <ListItem> 元件供顯示
+    .map(function(item){
 
         //
         return <ListItem 

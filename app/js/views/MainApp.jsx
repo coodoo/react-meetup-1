@@ -95,14 +95,14 @@ var MainApp = React.createClass({
 
     // 這時已不可用 setState()
     componentWillUpdate: function(nextProps, nextState) {
-        console.log( '\tMainAPP > willUpdate' );
+        // console.log( '\tMainAPP > willUpdate' );
     },
 
     /**
      * 
      */
     componentDidUpdate: function(prevProps, prevState) {
-        console.log( '\tMainAPP > didUpdate' );
+        // console.log( '\tMainAPP > didUpdate' );
     },
 
     //========================================================================
@@ -111,13 +111,13 @@ var MainApp = React.createClass({
 
     render: function() {
 
-        console.log( '\tMainApp > render' );
+        // console.log( '\tMainApp > render' );
 
         return (
             
             <div className="wrapper">
                 
-                <Header />
+                <Header truth={this.state} />
                 
                 <div className="main-box">
                     <InputBox truth={this.state} />
@@ -145,7 +145,7 @@ var MainApp = React.createClass({
      */
     _onChange: function(){
 
-        console.log( '_onChange 重繪: ', this.getTruth() );
+        // console.log( '_onChange 重繪: ', this.getTruth() );
       
         // 重要：從 root view 觸發所有 sub-view 重繪
         this.setState( this.getTruth() );
