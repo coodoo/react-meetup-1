@@ -8,4 +8,4 @@
 
 `npm start` 開始 bundle + watch
 
-
+`http://localhost:8000/` 即可看到畫面
