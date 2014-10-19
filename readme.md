@@ -1,4 +1,11 @@
 
-- 開發時，只要打 'gulp' 即可開始工作
 
-- 目前 npm start 也是預設執行 'gulp'
+## 執行方式
+
+	- `npm install` 安裝所有套件
+
+	- `node server` 啟動 local web server
+
+	- `npm start` 開始 bundle + watch
+
+
