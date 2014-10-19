@@ -1,9 +1,11 @@
 /**
  *
  */
-
 var actions = require('../actions/AppActionCreator');
 
+/**
+ * 
+ */
 var Header = React.createClass({
 
   /**
@@ -20,8 +22,8 @@ var Header = React.createClass({
         
         <input className="search-box right" 
                type="text" 
-               onChange={this.handleChange}
-               placeholder="search here" />
+               placeholder="search here" 
+               onChange={this.handleChange} />
 
       </header>
     );
@@ -36,8 +38,8 @@ var Header = React.createClass({
       actions.doSearch(val);
   },
 
+  //
   noop: function(){
-
   }
 
 });

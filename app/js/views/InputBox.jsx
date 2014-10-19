@@ -4,6 +4,9 @@
 var shortId = require('shortid');
 var actions = require('../actions/AppActionCreator');
 
+/**
+ * 
+ */
 var comp = React.createClass({
 
   /**
@@ -53,7 +56,7 @@ var comp = React.createClass({
    */
   handleChange: function(evt){
       this.state.currentItem.name = evt.target.value;
-      this.setState({currentItem: this.state.currentItem});
+      this.setState( {currentItem: this.state.currentItem} );
   },
   
   /**

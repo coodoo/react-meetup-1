@@ -1,11 +1,12 @@
 /**
  *
  */
-
 var actions = require('../actions/AppActionCreator');
 var ListItem = React.createFactory(require('./ListItem.jsx'));
 
-//
+/**
+ * 
+ */
 var comp = React.createClass({
 
   /**
@@ -15,6 +16,7 @@ var comp = React.createClass({
    */
   componentDidUpdate: function(){
 
+      // 下面都是在操作 DOM api，因此一開始就不用 jquery 選取，會便宜一些
       var elem = document.querySelector('.todo-list .selected');
 
       // 當前沒有選取任何項目就不繼續了
@@ -35,13 +37,14 @@ var comp = React.createClass({
   render: function() {
 
     var arrTodos = this.props.truth.arrTodos;
-    var filter = this.props.truth.filter;
+    var filterStr = this.props.truth.filter;
 
+    // 接著針對 arr 做 filter() 與 map() 兩段處理
     var arr = arrTodos
 
     // 先依隨打即查關鍵字過濾
     .filter(function(item){
-        return item.name.indexOf(filter) != -1;
+        return item.name.indexOf(filterStr) != -1;
     })
 
     // 再將合格的項目轉成 <ListItem> 元件供顯示
@@ -59,6 +62,9 @@ var comp = React.createClass({
           
     }, this)
 
+    // 當上面這段跑完時，arr[] 的內容會就是一包 <ListItem> 元件
+    // 下面就可直接使用
+
     return (
       
       <div className="todo-list">
@@ -69,7 +75,7 @@ var comp = React.createClass({
   },
 
   /**
-   * 
+   * 大部份 ui 操作最終都是直接轉手給 actions 去處理
    */
   handleClick: function( item ){
       // console.log( '\n\nitem click: ', item.name );
@@ -80,14 +86,12 @@ var comp = React.createClass({
    * 
    */
   handleRemove: function( item ){
-      console.log( '\n\nitem remove: ', item.name );
+      // console.log( '\n\nitem remove: ', item.name );
       actions.removeTodo(item);
   },  
 
   //
-  noop: function(){
-
-  }
+  noop: function(){}
 
 });
 

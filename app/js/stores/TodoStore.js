@@ -15,7 +15,7 @@ var EventEmitter = require('events').EventEmitter; // 取得一個 pub/sub 廣�
 
 //========================================================================
 //
-// Public API
+// Private vars
 
 // 等同於 TodoStore extends EventEmitter 
 // 從此取得廣播的能力
@@ -43,6 +43,9 @@ var o = JSON.parse(db.getItem('mydb'));
 arrTodos = o.todos ? o.todos : [] ;
 selectedItem = o.selectedItem;
 
+//========================================================================
+//
+// Public API
 
 /**
  * 建立 Store class，並且繼承 EventEMitter 以擁有廣播功能
@@ -68,8 +71,6 @@ objectAssign( Store, EventEmitter.prototype, {
 //========================================================================
 //
 // event handlers
-
-var lastOP = undefined;
 
 /**
  * 向 Dispatcher 註冊自已，才能偵聽到系統發出的事件
@@ -144,7 +145,6 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
                 Store.emit( AppConstants.CHANGE_EVENT );
                 persist();
             }
-
                 
             break;
 
@@ -174,7 +174,9 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
 //
 // private methods
 
-
+/**
+ * 將資料保存入 localStorage，下次開啟時取回
+ */
 function persist(){
     db.setItem('mydb', JSON.stringify({todos: arrTodos, selectedItem: selectedItem}) );
 }
