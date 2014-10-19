@@ -1,6 +1,7 @@
 /**
  * 
  */
+var shortId = require('shortid');
 var actions = require('../actions/AppActionCreator');
 
 var comp = React.createClass({
@@ -76,7 +77,7 @@ var comp = React.createClass({
       // 未輸入文字的話就擋掉
       if( item.name.trim().length == 0 ) return;
 
-      item.uid = window.cnt++;
+      item.uid = shortId.generate();
       item.created = Date.now();
 
       actions.createTodo( item );

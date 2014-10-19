@@ -22,20 +22,32 @@ var EventEmitter = require('events').EventEmitter; // 取得一個 pub/sub 廣�
 // 由於將來會返還 TodoStore 出去，因此下面寫的會全變為 public methods
 var Store = {};
 
-// 該此的 global variable，不要學...
-window.cnt = 1;
-
 // 假資料
-var arrTodos = [
-    {name: '待辦事項 1', created: Date.now(), uid: cnt++},
-    {name: '待辦事項 2', created: Date.now(), uid: cnt++}
-];
+var arrTodos = null;
 
 // 目前選取的 todo 項目
 var selectedItem = null;
 
 // header 裏隨打即查輸入的文字
 var searchFilter = '';
+
+// app 第一次啟動時，存入一包 mock data 到 localStorage 供測試
+var db = window.localStorage;
+if( db.hasOwnProperty('mydb') == false ){
+    console.log( '\n無歷史資料，存入 mock data' );
+    // var mock = [
+    //     {name: '待辦事項 1', created: Date.now(), uid: cnt++},
+    //     {name: '待辦事項 2', created: Date.now(), uid: cnt++}
+    // ];
+    // db.setItem('mydb', JSON.stringify({todos: mock, selectedItem: null}) )
+    db.setItem('mydb', JSON.stringify({todos: [], selectedItem: null}) )
+}
+
+// 接著一律從 db 讀取歷史資料
+var o = JSON.parse(db.getItem('mydb'));
+arrTodos = o.todos ? o.todos : [] ;
+selectedItem = o.selectedItem;
+
 
 /**
  * 建立 Store class，並且繼承 EventEMitter 以擁有廣播功能
@@ -89,6 +101,8 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
             selectedItem = action.item;
 
             Store.emit( AppConstants.CHANGE_EVENT );
+
+            persist();
                 
             break;
 
@@ -104,6 +118,8 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
             console.log( 'Store 刪完: ', arrTodos );
 
             Store.emit( AppConstants.CHANGE_EVENT );
+
+            persist();
                 
             break;
 
@@ -115,6 +131,8 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
             console.log( 'Store 更新: ', arrTodos );
 
             Store.emit( AppConstants.CHANGE_EVENT );
+
+            persist();
                 
             break;
 
@@ -129,6 +147,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
             if( selectedItem != action.item ){
                 selectedItem = action.item;
                 Store.emit( AppConstants.CHANGE_EVENT );
+                persist();
             }
 
                 
@@ -155,6 +174,15 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
     }
 
 })
+
+//========================================================================
+//
+// private methods
+
+
+function persist(){
+    db.setItem('mydb', JSON.stringify({todos: arrTodos, selectedItem: selectedItem}) );
+}
 
 //
 module.exports = Store;

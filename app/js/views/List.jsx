@@ -51,7 +51,7 @@ var comp = React.createClass({
         return <ListItem 
 
                 todoItem={item}
-                selected={this.props.truth.selectedItem == item} 
+                selected={this.props.truth.selectedItem.uid == item.uid} 
                 key={item.uid}
 
                 onClick={this.handleClick.bind(this, item)}
