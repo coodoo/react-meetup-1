@@ -10,8 +10,8 @@
 
 // v0.12 開始如果不要 JSX，要用 createFactory 產生 instance 才能使用
 // 因為 react 不再是 global，所以要自已 require 到檔案中
-var React = require('react'),
-    MainApp = require('./views/MainApp.jsx');
+var React = require('react');
+var MainApp = require('./views/MainApp.jsx');
 
 $(function(){
 
