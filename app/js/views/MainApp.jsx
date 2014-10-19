@@ -12,9 +12,12 @@ var Header = React.createFactory( require('./Header.jsx') );
 var Footer = React.createFactory( require('./Footer.jsx') );
 var InputBox = React.createFactory( require('./InputBox.jsx') );
 var List = React.createFactory( require('./List.jsx') );
+var Detail = React.createFactory( require('./Detail.jsx') );
 
 var TodoStore = require('../stores/TodoStore');
 var AppConstants = require('../constants/AppConstants');
+
+var idResize;
 
 /**
  * 
@@ -29,7 +32,9 @@ var MainApp = React.createClass({
      * 這是 component API, 在 mount 前會跑一次，取值做為 this.state 的預設值
      */
     getInitialState: function() {
-        return this.getTruth();
+        var o = this.getTruth(); 
+        o.screenSize = 'tablet'
+        return o;
     },
 
     /**
@@ -37,6 +42,37 @@ var MainApp = React.createClass({
      */
     componentWillMount: function() {
         TodoStore.addListener( AppConstants.CHANGE_EVENT, this._onChange );
+
+        // 要用 interval 擋一下
+        window.addEventListener('resize', this.handleResize );
+
+        this.handleResize();
+    },
+
+    handleResize: function(evt){
+            
+        clearTimeout( idResize );
+
+        idResize = setTimeout(function(){
+        
+            var body = document.body;
+            var size;
+            
+            // @todo: 改回 1024
+            if(body.scrollWidth > 720){
+                size = 'desktop';
+            }else if(body.scrollWidth > 480){
+                size = 'tablet';
+            }else{
+                size = 'phone';
+            }
+            
+            console.log( 'resize: ', body.scrollWidth, body.scrollHeight, ' >size: ', size );
+
+            this.setState({screenSize: size});
+
+        }.bind(this), 0)
+
     },
 
     /**
@@ -101,20 +137,64 @@ var MainApp = React.createClass({
      */
     render: function() {
 
-        return (
+        var size = this.state.screenSize;
+        console.log( 'size: ', size );
+
+        if( size == 'phone' ){
+
+            // phone
+            return (
+                
+                <div className="wrapper">
+                    
+                    <Header truth={this.state} />
+                    
+                    <div className="main-box">
+                        <InputBox truth={this.state} />
+                        <List truth={this.state} />
+                    </div>
+                    
+                    <Footer />
+                </div>    
+            )
+
+        }else if( size == 'tablet'){
+
+            // tablet
+            return (
+                
+                <div className="wrapper">
+                    
+                    <Header truth={this.state} />
+                    
+                    <div className="main-box">
+                        <InputBox truth={this.state} />
+                        <List truth={this.state} />
+                    </div>
+                    
+                    <Footer />
+                </div>    
+            )
+        
+        }else{
             
-            <div className="wrapper">
+            // desktop
+            return (
                 
-                <Header truth={this.state} />
-                
-                <div className="main-box">
-                    <InputBox truth={this.state} />
-                    <List truth={this.state} />
-                </div>
-                
-                <Footer />
-            </div>    
-        )
+                <div className="wrapper">
+                    
+                    <Header truth={this.state} />
+                    
+                    <div className="main-box">
+                        <InputBox truth={this.state} />
+                        <List truth={this.state} />
+                        <Detail truth={this.state} />
+                    </div>
+                    
+                    <Footer />
+                </div>    
+            )
+        }
     },
 
 

@@ -95,10 +95,6 @@
     outline: 0;
 }
 
-
-
-
-
 .selected {
     background-color: yellow;
 }
@@ -112,4 +108,64 @@
 
 .right {
     float: right;
+}
+
+/*  
+    Tablet
+    480-720px 
+*/
+@media (max-width: 480px) {
+    
+    .main-box {
+        position: absolute;
+        top: 48px;
+        left: 0;
+        right: 0;
+        bottom: 36px;    
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        background-color: #F0E68C
+    }
+
+    .todo-list {
+        border: 2px solid gray;
+        height: auto;
+        overflow: scroll;
+        position: absolute;
+        top: 55px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+}
+
+/* 
+    Desktop
+    一般應該是 1024+ 才進入此段
+    但為了示範方便，先寫 720px
+*/
+@media (min-width: 720px) {
+    
+    .todo-list {
+        border: 2px solid gray;
+        width: 120px;
+        height: 200px;
+        overflow: scroll;
+        display: inline-block;
+    }
+
+    .item-detail {
+        float: right;
+        width: calc(100% - 140px);
+        height: 200px;
+        display: inline-block;
+    }
+
+    .item-detail button {
+        margin-top: -45px;
+        float: right;
+    }
+
 }
