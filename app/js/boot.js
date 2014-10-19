@@ -8,12 +8,14 @@
  * 
  */
 
-// v0.12 開始要用 factory 包一次才能直接呼叫	
-var MainApp = React.createFactory(require('./views/MainApp.jsx'));
+// v0.12 開始如果不要 JSX，要用 createFactory 產生 instance 才能使用
+// 因為 react 不再是 global，所以要自已 require 到檔案中
+var React = require('react'),
+    MainApp = require('./views/MainApp.jsx');
 
 $(function(){
 
 	// 啟動 root view 時要傳入假資料
-	React.render( MainApp(), document.getElementById('container') );
+	React.render( <MainApp />, document.getElementById('container') );
 
-})
+});
