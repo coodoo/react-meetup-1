@@ -1,0 +1,117 @@
+
+.wrapper {
+    background-color: #aadca8;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.logo {
+    line-height: 48px;
+    width: auto;
+    display: inline-block;
+}
+
+.header {
+    width: 100%;
+    height: 48px;
+    background-color: #99c2fa;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width:100%;
+    height: 36px;
+    background-color: #803b00;
+}
+
+.footer span {
+    color: white;
+    display: block;
+    text-align: center;
+    line-height: 36px;
+}
+
+.search-box {
+    /* line-height: 48px; */
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+.main-box {
+    width: 80%;
+    margin: 60px auto;
+    /* position: absolute;
+    left: 40px;
+    top: 60px;
+    width: 420px;
+    height:500px; */
+
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.input-box {
+    width: 100%;
+    height:34px;
+    margin-bottom: 10px;
+}
+
+.input-box .search-input {
+    width: 82%;
+    height: 100%;
+}
+
+.save-button {
+    width: 16%;
+    height: 100%;
+}
+
+.todo-list {
+    border: 2px solid gray;
+    height: 200px;
+    overflow: scroll;
+}
+
+.list-item {
+    padding: 0px 8px;
+    line-height: 40px;
+    height: 40px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin-top: -1px;
+}
+
+
+
+.list-item span {
+    line-height: 36px;
+    outline: 0;
+}
+
+
+
+
+
+.selected {
+    background-color: yellow;
+}
+
+.boxo {
+    border: 1px dashed red;
+}
+.hide {
+    display: none;
+}
+
+.right {
+    float: right;
+}
