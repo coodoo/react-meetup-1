@@ -112,7 +112,7 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
         /**
          * 
          */    
-        case AppConstants.TODO_SELECT:
+        case AppConstants.T0DO_SELECT:
 
             console.log( 'Store 選取: ', action.item );
 
