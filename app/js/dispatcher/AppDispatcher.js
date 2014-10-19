@@ -7,12 +7,12 @@ var Dispatcher = require('flux').Dispatcher;
 /**
  * flux-chat 內最新的 dispatcher
  */
-var AppDispatcher = {};
+var AppDispatcher = new Dispatcher();
 
 // 注意：這裏等於是繼承 Dispatcher class 身上所有指令，目前是讓此物件俱有廣播能功
 // 同樣功能也可用 underscore.extend 或 Object.assign() 做到
 // 今天因為有用 jquery 就請它代勞了
-$.extend( AppDispatcher, new Dispatcher(), {
+$.extend( AppDispatcher, {
 
     /**
      * @param {object} action The details of the action, including the action's
