@@ -1,6 +1,8 @@
 /**
  * 
  */
+
+var React = require('react');
 var actions = require('../actions/AppActionCreator');
 
 var comp = React.createClass({

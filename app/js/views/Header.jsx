@@ -2,6 +2,7 @@
  *
  */
 
+var React = require('react');
 var actions = require('../actions/AppActionCreator');
 
 var Header = React.createClass({
@@ -17,7 +18,7 @@ var Header = React.createClass({
       <header className="header">
         
         <p className="logo">Todo for Dummies</p>
-        
+       //Shoule defaultValue be placeholder ?" 
         <input className="search-box right" type="text" defaultValue="search here" />
 
       </header>
