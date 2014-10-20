@@ -9,3 +9,11 @@
 `npm start` 開始 bundle + watch
 
 `http://localhost:8000/` 即可看到畫面
+
+## 課程講義
+
+http://goo.gl/625c0e
+
+## 線上試用
+
+http://coodoo.github.io/react-meetup-1/
