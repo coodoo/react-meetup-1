@@ -10,7 +10,6 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var actions = require('../actions/AppActionCreator');
 
-var objectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter; // 取得一個 pub/sub 廣播器
 
 //========================================================================
@@ -20,7 +19,7 @@ var EventEmitter = require('events').EventEmitter; // 取得一個 pub/sub 廣�
 // 等同於 TodoStore extends EventEmitter 
 // 從此取得廣播的能力
 // 由於將來會返還 TodoStore 出去，因此下面寫的會全變為 public methods
-var Store = {};
+var Store = new EventEmitter();
 
 // 假資料
 var arrTodos = null;
@@ -50,7 +49,7 @@ selectedItem = o.selectedItem;
 /**
  * 建立 Store class，並且繼承 EventEMitter 以擁有廣播功能
  */
-objectAssign( Store, EventEmitter.prototype, {
+$.extend( Store, {
 
     /**
      * Public API

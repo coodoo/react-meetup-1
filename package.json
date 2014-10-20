@@ -17,7 +17,7 @@
     "browserify": "^4.2.0",
     "connect": "^2.17.1",
     "gulp": "^3.8.5",
-    "reactify": "^0.13.1",
+    "reactify": "^0.13.1"
   },
   "scripts": {
     "start": "gulp",
