@@ -75,7 +75,9 @@ var comp = React.createClass({
 
 
   /**
-   * 
+   * input 是 controlled component
+   * 它的值是綁定在 this.state.selectedItem 身上
+   * 因此要在 change 時將新值設回 selectedItem 內，才會顯示在畫面上
    */
   handleChange: function(field, evt){
       this.state.selectedItem[field] = evt.target.value;
