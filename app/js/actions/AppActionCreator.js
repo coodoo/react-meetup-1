@@ -61,11 +61,12 @@ var AppActionCreators = {
     /**
      * 
      */
-    updateTodo: function( item ) {
+    updateTodo: function( item, newVal ) {
 
         AppDispatcher.handleViewAction({
             actionType: AppConstants.TODO_UPDATE,
-            item: item
+            item: item, 
+            newVal: newVal
         });
 
     },

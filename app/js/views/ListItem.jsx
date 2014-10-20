@@ -84,8 +84,8 @@ var comp = React.createClass({
               this.$input.off('keydown focusout');
               
               // 準備將新值存入 store，方法一樣是操作 actionCreator
-              this.props.todoItem.name = val;
-              actions.updateTodo( this.props.todoItem );
+              // this.props.todoItem.name = val;
+              actions.updateTodo( this.props.todoItem, val );
 
           }
       }.bind(this))

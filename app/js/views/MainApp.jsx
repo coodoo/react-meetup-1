@@ -67,7 +67,7 @@ var MainApp = React.createClass({
                 size = 'phone';
             }
             
-            console.log( 'resize: ', body.scrollWidth, body.scrollHeight, ' >size: ', size );
+            // console.log( 'resize: ', body.scrollWidth, body.scrollHeight, ' >size: ', size );
 
             this.setState({screenSize: size});
 
@@ -138,7 +138,7 @@ var MainApp = React.createClass({
     render: function() {
 
         var size = this.state.screenSize;
-        console.log( 'size: ', size );
+        // console.log( 'size: ', size );
 
         if( size == 'phone' ){
 

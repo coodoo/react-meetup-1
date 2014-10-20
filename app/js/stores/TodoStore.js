@@ -123,7 +123,9 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
          */    
         case AppConstants.TODO_UPDATE:
 
-            // console.log( 'Store 更新: ', arrTodos );
+            console.log( 'Store 更新: ', action.item );
+            
+            action.item.name = action.newVal;
 
             Store.emit( AppConstants.CHANGE_EVENT );
 
