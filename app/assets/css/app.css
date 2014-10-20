@@ -13,15 +13,19 @@
     line-height: 48px;
     width: auto;
     display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #F5F5F5;
 }
 
 .header {
     width: 100%;
     height: 48px;
-    background-color: #99c2fa;
+    background-color: #A48163;
     position: absolute;
     top: 0;
     left: 0;
+    padding: 0 10px;
 }
 
 .footer {
@@ -30,7 +34,7 @@
     bottom: 0;
     width:100%;
     height: 36px;
-    background-color: #803b00;
+    background-color: #A48163;
 }
 
 .footer span {
@@ -48,15 +52,9 @@
 
 .main-box {
     width: 80%;
-    margin: 60px auto;
-    /* position: absolute;
-    left: 40px;
-    top: 60px;
-    width: 420px;
-    height:500px; */
-
+    margin: 80px auto;
     padding: 10px;
-    border: 1px solid red;
+    background-color: #F0E68C
 }
 
 .input-box {
@@ -82,7 +80,7 @@
 }
 
 .list-item {
-    padding: 0px 8px;
+    padding: 0px 14px;
     line-height: 40px;
     height: 40px;
     border-top: 1px solid gray;
@@ -97,10 +95,6 @@
     outline: 0;
 }
 
-
-
-
-
 .selected {
     background-color: yellow;
 }
@@ -114,4 +108,64 @@
 
 .right {
     float: right;
+}
+
+/*  
+    Tablet
+    480-720px 
+*/
+@media (max-width: 480px) {
+    
+    .main-box {
+        position: absolute;
+        top: 48px;
+        left: 0;
+        right: 0;
+        bottom: 36px;    
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        background-color: #F0E68C
+    }
+
+    .todo-list {
+        border: 2px solid gray;
+        height: auto;
+        overflow: scroll;
+        position: absolute;
+        top: 55px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+}
+
+/* 
+    Desktop
+    一般應該是 1024+ 才進入此段
+    但為了示範方便，先寫 720px
+*/
+@media (min-width: 720px) {
+    
+    .todo-list {
+        border: 2px solid gray;
+        width: 120px;
+        height: 200px;
+        overflow: scroll;
+        display: inline-block;
+    }
+
+    .item-detail {
+        float: right;
+        width: calc(100% - 140px);
+        height: 200px;
+        display: inline-block;
+    }
+
+    .item-detail button {
+        margin-top: -45px;
+        float: right;
+    }
+
 }

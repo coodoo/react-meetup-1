@@ -10,16 +10,21 @@ var keyMirror = require('react/lib/keyMirror');
 // 不過既然如此，為何不乾脆用 set 之類只有key 的就好
 module.exports = keyMirror({
 
-	SOURCE_VIEW_ACTION: null,
-	SOURCE_SERVER_ACTION: null,
-	SOURCE_ROUTER_ACTION: null,
+  	SOURCE_VIEW_ACTION: null,
+  	SOURCE_SERVER_ACTION: null,
+  	SOURCE_ROUTER_ACTION: null,
 
   	CHANGE_EVENT: null,
   	
   	TODO_CREATE: null,
-  	TODO_REMOVE: null,
-  	TODO_UPDATE: null,
-  	TODO_SELECT: null,
+  	
+    TODO_REMOVE: null,
+  	
+    TODO_UPDATE: null,
+    
+    TODO_SELECT: null,
+    
+    TODO_FILTER: null,
 
   	noop: null
 });
