@@ -4,6 +4,7 @@
   "description": "Sample application for meetup",
   "main": "js/app.js",
   "dependencies": {
+    "debug": "^2.1.0",
     "es6-promise": "~0.1.1",
     "flux": "^2.0.1",
     "gulp-livereload": "^2.1.1",
