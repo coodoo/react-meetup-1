@@ -54,7 +54,7 @@ var comp = React.createClass({
         return <ListItem 
 
                 todoItem={item}
-                selected={this.props.truth.selectedItem.uid == item.uid} 
+                selected={this.props.truth.selectedItem && this.props.truth.selectedItem.uid == item.uid} 
                 key={item.uid}
 
                 onClick={this.handleClick.bind(this, item)}
@@ -86,7 +86,6 @@ var comp = React.createClass({
    * 
    */
   handleRemove: function( item ){
-      // console.log( '\n\nitem remove: ', item.name );
       actions.removeTodo(item);
   },  
 

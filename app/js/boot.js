@@ -8,7 +8,12 @@
  * 
  */
 
-// v0.12 開始要用 factory 包一次才能直接呼叫	
+// v0.12 開始要用 createFactory 包一次才能使用元件
+// 如果不希望這麼麻煩，只要在每份 js 裏都加下面這句即可，但它有缺點
+// var React = require('react');
+// 
+// 因為 require('...') 只是拿到一份元件定義檔，無法直接使用
+// 要用它建立一個 factory，之後才能產出 instance，下面 createFactory() 就是在建立工廠
 var MainApp = React.createFactory(require('./views/MainApp.jsx'));
 
 $(function(){

@@ -1,8 +1,17 @@
 /**
  * TodoConstants
  */
-
-var keyMirror = require('react/lib/keyMirror');
+ var keyMirror = function(obj) {
+   var ret = {};
+   var key;
+   for (key in obj) {
+     if (!obj.hasOwnProperty(key)) {
+       continue;
+     }
+     ret[key] = key;
+   }
+   return ret;
+ };
 
 // Constructs an enumeration with keys equal to their value.
 // 也就是讓 hash 的 key 與 value 值一樣

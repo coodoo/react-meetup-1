@@ -10,7 +10,6 @@
     "gulp-livereload": "^2.1.1",
     "gulp-minify-css": "^0.3.11",
     "gulp-notify": "^2.0.0",
-    "react": "^0.12",
     "shortid": "^2.0.1",
     "vinyl-source-stream": "^1.0.0"
   },

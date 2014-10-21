@@ -14,7 +14,7 @@ var comp = React.createClass({
    */
   getInitialState: function() {
       return {
-          selectedItem: this.props.truth.selectedItem
+          selectedItem: this.props.truth.selectedItem || {name:'', created:null}
       };
   },
 
@@ -23,7 +23,8 @@ var comp = React.createClass({
    * 在 render() 前執行，有機會可先處理 props 後用 setState() 存起來
    */
   componentWillReceiveProps: function(nextProps) {
-      this.setState({selectedItem: nextProps.truth.selectedItem})
+      var item = nextProps.truth.selectedItem ? nextProps.truth.selectedItem : {name:'', created:null};
+      this.setState({selectedItem: item});
   },
 
   /**
@@ -31,7 +32,7 @@ var comp = React.createClass({
    */
   render: function() {
 
-    var date = new Date(this.state.selectedItem.created).toLocaleString();
+    var date = this.state.selectedItem.created ? new Date(this.state.selectedItem.created).toLocaleString() : null;
 
     return (
       
@@ -48,7 +49,7 @@ var comp = React.createClass({
 
         <div className="form-group">
           <label htmlFor="todo-date">Created Date</label>
-          <p>{ new Date(this.state.selectedItem.created) + '' }</p>
+          <p>{ date }</p>
         </div>
 
         <div className="form-group">

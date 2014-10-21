@@ -110,6 +110,11 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(evt){
                 return item != action.item;
             })
 
+            // 如果當前選取的 item 被刪掉了，要記錄這個事實
+            if( selectedItem == action.item ){
+                selectedItem = null;
+            }
+
             // console.log( 'Store 刪完: ', arrTodos );
 
             Store.emit( AppConstants.CHANGE_EVENT );

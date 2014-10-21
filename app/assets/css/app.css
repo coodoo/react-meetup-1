@@ -74,7 +74,7 @@
 }
 
 .todo-list {
-    border: 2px solid gray;
+    border: 1px solid gray;
     height: 200px;
     overflow: scroll;
 }
@@ -96,7 +96,7 @@
 }
 
 .selected {
-    background-color: yellow;
+    background-color: #C2DAC2;
 }
 
 .boxo {
