@@ -2,6 +2,8 @@
 
 ## 執行方式
 
+[![Join the chat at https://gitter.im/coodoo/react-meetup-1](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/coodoo/react-meetup-1?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 `npm install` 安裝所有套件
 
 `node server` 啟動 local web server
